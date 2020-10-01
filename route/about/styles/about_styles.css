@@ -1,0 +1,9 @@
+.about {
+    width: 80%;
+    margin: 100px auto;
+    background-color: green;
+    height: 300px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
