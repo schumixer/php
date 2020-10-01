@@ -2,6 +2,7 @@
 	include $_SERVER['DOCUMENT_ROOT'].'/route/main_menu.php';
 	include $_SERVER['DOCUMENT_ROOT'].'/app/helpers/helper.php';
 	include $_SERVER['DOCUMENT_ROOT'].'/app/helpers/sortArray.php';
+	include $_SERVER['DOCUMENT_ROOT'].'/app/helpers/add.php';
 	$data = workWithData\readData();
 	$success = false;
 	$error = false;
@@ -34,3 +35,4 @@
 			<?}?>
 		</ul>
 	</div>
+	<?	addHeader\add();?>
