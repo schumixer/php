@@ -699,6 +699,7 @@ ul li.headerList {
 	float: left;
 	width: 15%;
 	font-size: 16px;
+	overflow: hidden;
 }
 a {
 	color: white;
@@ -713,4 +714,15 @@ ul li.footerList {
 
 .chosen {
 	text-decoration: solid;
+}
+
+li {
+	list-style-type: none;
+}
+
+h1.main_header {
+	text-transform: uppercase;
+	text-align: center;
+	clear: both;
+	margin-top: 50px;
 }

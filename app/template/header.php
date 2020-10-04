@@ -35,4 +35,4 @@
 			<?}?>
 		</ul>
 	</div>
-	<?	addHeader\add();?>
+	<?	addHeader\add($arr);?>
