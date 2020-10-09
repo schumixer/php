@@ -1,8 +1,11 @@
 <?
-	include $_SERVER['DOCUMENT_ROOT'].'/route/main_menu.php';
+	include $_SERVER['DOCUMENT_ROOT'].'/app/helpers/const.php';
+	include $_SERVER['DOCUMENT_ROOT'].'/app/helpers/upload.php';
 	include $_SERVER['DOCUMENT_ROOT'].'/app/helpers/helper.php';
 	include $_SERVER['DOCUMENT_ROOT'].'/app/helpers/sortArray.php';
 	include $_SERVER['DOCUMENT_ROOT'].'/app/helpers/add.php';
+
+	include $_SERVER['DOCUMENT_ROOT'].'/route/main_menu.php';
 	$data = workWithData\readData();
 	$success = false;
 	$error = false;
@@ -16,7 +19,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="/styles/global/styles.css">
 <link rel="stylesheet" href="/styles/main/main_styles.css">
-<link rel="stylesheet" href="/route/about/styles/about_styles.css">
+<link rel="stylesheet" href="/route/download/styles/download_styles.css">
 <link rel="stylesheet" href="/route/contacts/styles/contacts_styles.css">
 <link rel="stylesheet" href="/route/photo/styles/photo_styles.css">
 <title>Project - ведение списков</title>

@@ -1,4 +1,4 @@
-.about {
+.download {
     width: 80%;
     margin: 100px auto;
     background-color: green;
@@ -6,4 +6,12 @@
     color: white;
     text-transform: uppercase;
     text-align: center;
+}
+.error {
+    text-align: center;
+    color: red;
+}
+.success {
+    text-align: center;
+    color: green;
 }
