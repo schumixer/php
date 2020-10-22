@@ -12,7 +12,7 @@
 <div class="download">
 	<form enctype="multipart/form-data" method="POST" action="<?=$_SERVER['PHP_SELF']?>">
 		<span>Download the file</span>
-		<input type="file" name="myfile"/>
+		<input multiple type="file" name="myfiles[]"/>
 		<br/>
 		<br/>
 		<input type="submit" name="upload" value="Download">
