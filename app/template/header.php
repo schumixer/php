@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="/route/photo/styles/photo_styles.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/route/photo/file.js"></script>
+<script src="/route/download/ajax.js"></script>
 <title>Project - ведение списков</title>
 </head>
 

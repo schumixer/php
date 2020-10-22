@@ -1,6 +1,6 @@
 <?
 	include $_SERVER['DOCUMENT_ROOT'].'/app/template/header.php';
-	workWithImages\checkUpload($uploadPath);
+	//workWithImages\checkUpload($uploadPath);
 	// $path = "/";
 	// foreach ($variable as $value) {
 	// 	if($variable["title"]=='Photo') {
@@ -15,7 +15,7 @@
 		<input multiple type="file" name="myfiles[]"/>
 		<br/>
 		<br/>
-		<input type="submit" name="upload" value="Download">
+		<input id="btn" type="button" name="upload" value="Download">
 	</form>
 </div>
 <?
