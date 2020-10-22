@@ -26,4 +26,12 @@ function checkUpload($uploadPath) {
         } 
     }
 }
+function uploadImages($uploadPath) {
+    $images = array_diff(scandir($uploadPath), array('.', '..'));
+    foreach ($images as &$image) {
+        $image = "/upload/" . $image;
+    }
+    return $images;
+}
+
 ?>

@@ -1,9 +1,13 @@
 .photo {
-    width: 80%;
+    /* width: 80%;
     margin: 100px auto;
     background-color: brown;
     height: 300px;
     color: white;
     text-transform: uppercase;
-    text-align: center;
+    text-align: center; */
+}
+.photo img {
+    margin: 50px;
+    display: block;
 }
