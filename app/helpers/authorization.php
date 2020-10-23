@@ -3,10 +3,9 @@ class AuthClass {
     private $data;
     public function __construct() {
         session_start(); //Запускаем сессии
-        ini_set('session.gc_maxlifetime', 10);
         $this->$data = $this->readData();
         if($_COOKIE["login"])
-                setcookie("login",$_COOKIE["login"],time()+3600*30*24);
+                setcookie("login",$_COOKIE["login"],time()+3600*30*24,"/");
     }
     private function readData(){
         $fl = fopen($_SERVER['DOCUMENT_ROOT']."/include/login.txt", 'r') or die("не удалось открыть файл");
@@ -38,7 +37,7 @@ class AuthClass {
             $success = true;
             $_SESSION["is_auth"] = true; //Делаем пользователя авторизованным
             if(!$_COOKIE["login"])
-                setcookie("login",$login,time()+3600*30);
+                setcookie("login",$login,time()+3600*30,"/");
             return true;
 		}
 		else
