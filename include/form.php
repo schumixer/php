@@ -1,4 +1,4 @@
-<form action="/" method ="POST">
+<form action="<?=$_SERVER['PHP_SELF']?>" method ="POST">
     <div class="index-auth">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
