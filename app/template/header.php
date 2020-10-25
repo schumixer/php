@@ -6,6 +6,7 @@
 	include $_SERVER['DOCUMENT_ROOT'].'/app/helpers/add.php';
 	include $_SERVER['DOCUMENT_ROOT'].'/app/helpers/authorization.php';
 	include $_SERVER['DOCUMENT_ROOT'].'/route/main_menu.php';
+	include $_SERVER['DOCUMENT_ROOT'].'/app/helpers/findPathInArray.php';
 	
 	include $_SERVER['DOCUMENT_ROOT'].'/app/helpers/headerHelper.php';
 	

@@ -1,8 +1,9 @@
 <?
 namespace menu;
 function create($arr, $auth, $className){
+    $isAuthFlag = $auth->isAuth();
     foreach ($arr as $key => $value) {
-        if(!$auth->isAuth()) {
+        if(!$isAuthFlag) {
             if($value['title']=='Leave'){
                 unset($arr[$key]);
                 break;

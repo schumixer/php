@@ -1,4 +1,5 @@
 <?
+//phpinfo();
 	include $_SERVER['DOCUMENT_ROOT'].'/app/template/header.php';
 ?>  
 <div class="content">

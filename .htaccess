@@ -1,0 +1,4 @@
+php_value session.gc_maxlifetime 2400
+php_value session.gc_divisor 100
+php_value session.cookie_lifetime 2400
+php_value session.name "session_id"

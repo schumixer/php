@@ -4,8 +4,12 @@ class AuthClass {
     public function __construct() {
         session_start(); //Запускаем сессии
         $this->$data = $this->readData();
-        if($_COOKIE["login"])
-                setcookie("login",$_COOKIE["login"],time()+3600*30*24,"/");
+        if($this->isAuth()) {
+            setcookie("login",$_COOKIE["login"],time()+3600*30*24,"/");
+            setcookie("session_id",$_COOKIE["session_id"],time()+30,"/");
+            setcookie("isFirst",1,time()+3600*30*24,"/");
+        }
+                
     }
     private function readData(){
         $fl = fopen($_SERVER['DOCUMENT_ROOT']."/include/login.txt", 'r') or die("не удалось открыть файл");
@@ -37,7 +41,8 @@ class AuthClass {
             $success = true;
             $_SESSION["is_auth"] = true; //Делаем пользователя авторизованным
             if(!$_COOKIE["login"])
-                setcookie("login",$login,time()+3600*30,"/");
+                setcookie("login",$login,time()+3600*30*24,"/");
+                setcookie("isFirst",1,time()+3600*30*24,"/");
             return true;
 		}
 		else
@@ -60,6 +65,7 @@ class AuthClass {
     public function out() {
         unset($_SESSION["login"]);
         setcookie("login","",time()-3600);
+        setcookie("isFirst","",time()-3600);
         $_SESSION = array(); //Очищаем сессию
         session_destroy(); //Уничтожаем
     }
