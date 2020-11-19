@@ -6,6 +6,11 @@
                 <tr>
                     <td class="iat">Ваш логин: <br /> <input id="login_id" size="30" name="login" value="<?=htmlspecialchars($_POST['login']??'')?>"/></td>
                 </tr>
+            <?}
+            else {?>
+                <tr>
+                    <td>Ваш логин: <?=$_COOKIE["login"]?></td>
+                </tr>
             <?}?>
             
             <tr>

@@ -7,7 +7,6 @@ $( document ).ready(function() {
 
     // обработка и отправка AJAX запроса при клике на кнопку upload_files
     $('#btn').on( 'click', function( event ){
-
         event.stopPropagation(); // остановка всех текущих JS событий
         event.preventDefault();  // остановка дефолтного события для текущего элемента - клик для <a> тега
         // ничего не делаем если files пустой
@@ -23,7 +22,6 @@ $( document ).ready(function() {
 
         // добавим переменную для идентификации запроса
         data.append( 'my_file_upload', 1 );
-
         // AJAX запрос
         $.ajax({
             url         : 'submit.php',

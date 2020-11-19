@@ -20,6 +20,7 @@ if(isset($_POST['password']))
 {
     $auth->auth($_POST['login'], $_POST['password'], $error, $success);
 }
+
 if ($_GET["is_exit"]==1){
     $auth->out();
 }
