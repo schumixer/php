@@ -1,5 +1,7 @@
 <?
 $auth = new AuthClass();
+
+
 $sessionIsOverWithAuth = isset($_COOKIE['login']) && $_SESSION[is_auth]!=1;
 if ($sessionIsOverWithAuth){
     
@@ -11,7 +13,6 @@ if ($sessionIsOverWithAuth){
     }
     //setcookie("isFirst",1,time()+3600*30*24,"/");
     $_POST['login'] = $_COOKIE['login'];
-    
 }
 
 $success = false;
@@ -24,5 +25,16 @@ if(isset($_POST['password']))
 if ($_GET["is_exit"]==1){
     $auth->out();
 }
+#profile deletion
+if(!$auth->isAuth()){
+    for ($i=0; $i<count($arr); $i++) {
+        if($arr[$i]['title']=='Profile'){
+            unset($arr[$i]);
+            break;
+        }
+    }
+}
+################
 $arr = sortArray\sort_($arr,true);
+
 ?>

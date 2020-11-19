@@ -15,15 +15,72 @@ class AuthClass {
         if(isset($_COOKIE["session_id"]) )
             session_start(); //Запускаем сессии
     }
+    private function connectToDB(){
+        $host = 'localhost';
+        $user = 'mysql';
+        $password = 'mysql';
+        $dbname = 'mydb';
+        $connect = mysqli_connect($host, $user, $password,$dbname);
+        if(mysqli_connect_errno()){
+            echo mysqli_connect_error();
+            return -1;
+        }
+        else{
+            return $connect;
+        }
+    }
+    public function readProfile() {
+        $login = $this->getLogin();
+        if(isset($login)){
+            $connect = $this->connectToDB();
+            if ($connect==-1){
+                return -1;
+            }
+            else {
+                $result = mysqli_query(
+                    $connect,
+                    "select * from users where login = '$login'"
+                );
+                while($row = mysqli_fetch_assoc($result)){
+                    echo "<p>";
+                    var_export($row);
+                    echo "</p>";
+            }
+            
+                
+            mysqli_close($connect);
+            }
+        }
+
+    }
     private function readData(){
-        $fl = fopen($_SERVER['DOCUMENT_ROOT']."/include/login.txt", 'r') or die("не удалось открыть файл");
-        $fp = fopen($_SERVER['DOCUMENT_ROOT']."/include/password.txt", 'r') or die("не удалось открыть файл");
-        $data = [];
-        while(!feof($fl))
-            $data[htmlentities(rtrim(fgets($fl)))] = htmlentities(rtrim(fgets($fp)));
-        fclose($fl);
-        fclose($fp);
-        return $data;
+        //$fl = fopen($_SERVER['DOCUMENT_ROOT']."/include/login.txt", 'r') or die("не удалось открыть файл");
+        //$fp = fopen($_SERVER['DOCUMENT_ROOT']."/include/password.txt", 'r') or die("не удалось открыть файл");
+        ///////////////////////////
+        $connect = $this->connectToDB();
+        if ($connect==-1){
+            return -1;
+        }
+        else {
+            $result = mysqli_query(
+                $connect,
+                "select login, password from users"
+            );
+
+            $data = [];
+            while($row = mysqli_fetch_assoc($result)){
+                    $data[htmlentities(rtrim($row['login']))] = htmlentities(rtrim($row['password']));
+            }
+            
+                
+            mysqli_close($connect);
+                /////////////////////////
+            // fclose($fl);
+            // fclose($fp);
+            ///////////////
+            return $data;
+        }
+        
     }
     public function isAuth() {
         if (isset($_SESSION["is_auth"])) { //Если сессия существует
@@ -62,18 +119,21 @@ class AuthClass {
      */
     public function getLogin() {
         if ($this->isAuth()) { //Если пользователь авторизован
-            return $_SESSION["login"]; //Возвращаем логин, который записан в сессию
+            return $_COOKIE["login"]; //Возвращаем логин, который записан в сессию
         }
     }
      
      
     public function out() {
-        unset($_SESSION["login"]);
-        setcookie("login","",time()-3600);
-        setcookie("isFirst","",time()-3600);
-        setcookie("session_id","",time()-3600);
-        $_SESSION = array(); //Очищаем сессию
-        session_destroy(); //Уничтожаем
+        if(isset($_SESSION)){
+            unset($_SESSION["login"]);
+            setcookie("login","",time()-3600);
+            setcookie("isFirst","",time()-3600);
+            setcookie("session_id","",time()-3600);
+            $_SESSION = array(); //Очищаем сессию
+            session_destroy(); //Уничтожаем
+        }
+        
     }
 }
 ?>
